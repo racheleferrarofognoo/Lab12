@@ -48,6 +48,9 @@ class View:
 
         # Riga 3: Implementare la parte di ricerca del cammino minimo
         # TODO
+        self.btn_cammino_medio = ft.ElevatedButton(text="Cammino Medio", width=200, on_click=self.controller.handle_cammino_minimo if self.controller else None)
+        self.lista_visualizzazione_3 = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=False)
+
 
         # --- Toggle Tema ---
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)
@@ -70,6 +73,8 @@ class View:
 
             # Implementare la parte di ricerca del cammino minimo
             # TODO
+            self.btn_cammino_medio,
+            self.lista_visualizzazione_3,
         )
 
         self.page.scroll = "adaptive"

@@ -48,4 +48,23 @@ class Controller:
 
     """Implementare la parte di ricerca del cammino minimo"""
     # TODO
+    def handle_cammino_minimo(self):
+        if self._model.G.number_of_nodes() == 0:
+            self._view.show_alert("Crea prima il grafo") #controllo che il grafo ci sia
+            return
+
+        try:
+            soglia = float(self._view.txt_soglia.value)
+        except:
+            self._view.show_alert("Inserisci un numero valido per la soglia.")
+            return
+
+        cammino = self._model.cammino_minimo(soglia)
+        self._view.lista_visualizzazione_3.controls.clear()
+        self._view.lista_visualizzazione_3.controls.append(ft.Text("Cammino minimo:"))
+        for i in range(len(cammino)):
+            rifugio = self._model.id_map[cammino[i]]
+            self._view.lista_visualizzazione_3.controls.append(ft.Text(f"({i+1}){rifugio.nome}: {rifugio.localita}"))
+
+        self._view.page.update()
 
